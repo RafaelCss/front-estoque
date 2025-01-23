@@ -1,10 +1,10 @@
 {
-   "version": 2,
-    "builds":[
-        {
-            "src":"package.json",
-            "use":"@vercel/node"
-        }
-    ],
-    "output": "build"
-}
+    "headers": [
+      {
+        "source": "/importmap.json",
+        "headers": [
+          { "key": "Cache-Control", "value": "no-cache" }
+        ]
+      }
+    ]
+  }

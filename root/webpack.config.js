@@ -14,6 +14,13 @@ module.exports = (webpackConfigEnv, argv) => {
 
   return merge(defaultConfig, {
     // modify the webpack config however you'd like to by adding to this object
+    output: {
+      path: path.resolve(process.cwd(), "dist"),
+      filename: "[name].js",
+      publicPath: webpackConfigEnv && webpackConfigEnv.isLocal
+        ? "/"
+        : "https://root-config.vercel.app/", // Altere para o domínio final
+    },
     plugins: [
       new HtmlWebpackPlugin({
         inject: false,

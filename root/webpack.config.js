@@ -1,6 +1,7 @@
 const { merge } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-ts");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path"); // Adicione esta linha para importar o módulo 'path'
 
 module.exports = (webpackConfigEnv, argv) => {
   const orgName = "front-estoque";
@@ -13,13 +14,13 @@ module.exports = (webpackConfigEnv, argv) => {
   });
 
   return merge(defaultConfig, {
-    // modify the webpack config however you'd like to by adding to this object
+    // Modify the webpack config however you'd like by adding to this object
     output: {
-      path: path.resolve(process.cwd(), "dist"),
+      path: path.resolve(process.cwd(), "dist"), // Resolve o caminho corretamente
       filename: "[name].js",
       publicPath: webpackConfigEnv && webpackConfigEnv.isLocal
         ? "/"
-        : "https://root-config.vercel.app/", // Altere para o domínio final
+        : "https://root-config.vercel.app/", // Alterar para o domínio final
     },
     plugins: [
       new HtmlWebpackPlugin({
